@@ -274,18 +274,12 @@
             position:relative;
             z-index:1001;
         }
-        .movie-list article{
-            display:none;
-        }
-        .movie-list article.active{
-            display:block;
-        }
-        
         .movie-list .list-tit{
             margin-bottom:50px;
         }
         .movie-list .list-tit ul{
             display:flex;
+            flex-flow: row wrap;
             justify-content:center;
         }
         .movie-list .list-tit ul li{
@@ -300,7 +294,6 @@
             color:#352461;
             cursor: pointer;
         }
-
         .movie-list .list-tit ul li:hover,
         .movie-list .list-tit ul li.active{            
             background-color:#352461;
@@ -309,6 +302,16 @@
         .movie-list .list-tit ul li:last-child{
             border-right:1px solid #352461;
         }
+        .movie-box{
+            margin-bottom: 50px;
+        }
+        .movie-box article{
+            display:none;
+        }
+        .movie-box article.active{
+            display:block;
+        }
+        
         .poster{
             margin-bottom:20px;
             border-radius:1em;
@@ -381,7 +384,50 @@
             border:none;            
             background-color:#037b94;            
         }
-
+        .movie-list-nav{
+            font-size: 1.1em;
+            color: #fff;
+        }        
+        .movie-list-nav ul{
+            display: flex;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        .movie-list-nav ul li{
+            width: 25%;
+            border-right: 2px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+        .movie-list-nav ul li:last-child{
+            border-right-color: transparent;
+        }
+        .movie-list-nav ul li:first-child a{
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .movie-list-nav input{
+            border: none;
+            background-color: transparent;
+            color: #fff;
+        }
+        .movie-list-nav input:focus{
+            border: none;
+            outline: none;
+        }
+        .movie-list-nav i{
+            margin-right: 0.5em;
+            font-size: 1.5em;
+        }
+        .movie-list .in{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .movie-list .in i{
+            margin-right: 0.5em;
+            font-size: 2em;
+            opacity: 0.8;
+        }
+        
 
 
         
@@ -455,6 +501,22 @@
                 border-bottom:2px solid #fff;
                 color:rgba(255,255,255,1);
             }
+            .movie-list-nav ul li:first-child a {
+                border: none;
+            }
+            .movie-list .in i{
+                font-size: 2em;
+            }
+            .movie-list .in i{
+                margin: 0;
+            }
+            .movie-list-nav input,
+            .movie-list-nav span
+            {
+                display: none;
+                width: 30px;
+            }
+            
 
 
         }
@@ -570,6 +632,10 @@
             }
             .poster .movie-contents p:first-child{
                 font-size:2vw;
+            }
+            .movie-list a i,
+            .movie-list .in i{
+                font-size: 1.6em;
             }
         }
     </style>
@@ -711,7 +777,7 @@
                     </ul>
                 </div>
 
-                <div class="movie-list">
+                <div class="movie-box">
                     <!-- 박스오피스 -->
                     <article class="box-office active">
                         <!-- Slider main container -->
@@ -1912,6 +1978,35 @@
                         </div>
                     </article>
                     <!-- 플래식소사이어티끝 -->
+                </div>
+
+                <div class="movie-list-nav">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="return false">
+                                <input type="text" placeholder="영화명을 입력해주세요">
+                                <i class="fas fa-search" title="영화명을 입력해주세요"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="in">
+                                <i class="fas fa-calendar" title="상영시간표"></i>
+                                <span>상영시간표</span>                               
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="in">
+                                <i class="fas fa-film" title="박스오피스"></i>
+                                <span>박스오피스</span>                              
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="in">
+                                <i class="fas fa-ticket-alt" title="빠른예매"></i>
+                                <span>빠른예매</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
 
