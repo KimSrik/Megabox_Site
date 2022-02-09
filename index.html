@@ -20,6 +20,11 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        .clearfix::after{
+            content:'';
+            display:block;
+            clear:both;
+        }
         :root{
             font-family: 'Noto Sans KR', sans-serif;
             font-size:14px;
@@ -279,7 +284,6 @@
         }
         .movie-list .list-tit ul{
             display:flex;
-            flex-flow: row wrap;
             justify-content:center;
         }
         .movie-list .list-tit ul li{
@@ -294,6 +298,7 @@
             color:#352461;
             cursor: pointer;
         }
+
         .movie-list .list-tit ul li:hover,
         .movie-list .list-tit ul li.active{            
             background-color:#352461;
@@ -303,7 +308,7 @@
             border-right:1px solid #352461;
         }
         .movie-box{
-            margin-bottom: 50px;
+            margin-bottom:50px;
         }
         .movie-box article{
             display:none;
@@ -311,7 +316,7 @@
         .movie-box article.active{
             display:block;
         }
-        
+
         .poster{
             margin-bottom:20px;
             border-radius:1em;
@@ -385,51 +390,227 @@
             background-color:#037b94;            
         }
         .movie-list-nav{
-            font-size: 1.1em;
-            color: #fff;
-        }        
+            font-size:1.1em;
+            color:#fff;
+        }
         .movie-list-nav ul{
-            display: flex;
-            padding: 20px 0;
-            background-color: rgba(0, 0, 0, 0.3);
+            display:flex; 
+            flex-flow:row wrap;
+            padding:20px 0;
+            background-color:rgba(0,0,0,0.1);           
         }
         .movie-list-nav ul li{
-            width: 25%;
-            border-right: 2px solid rgba(255,255,255,0.3);
-            text-align: center;
-        }
+            width:25%;
+            border-right:1px solid rgba(255,255,255,0.3);
+            text-align:center;
+        }        
         .movie-list-nav ul li:last-child{
-            border-right-color: transparent;
+            border-right-color:transparent;
         }
         .movie-list-nav ul li:first-child a{
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom:1px solid rgba(255,255,255,0.3);
         }
+        
         .movie-list-nav input{
-            border: none;
-            background-color: transparent;
-            color: #fff;
+            border:none;
+            background-color:transparent;
+            font-size:1.1em;
+            color:#fff;
         }
         .movie-list-nav input:focus{
-            border: none;
-            outline: none;
+            border:none;
+            outline:none;
         }
-        .movie-list-nav i{
-            margin-right: 0.5em;
-            font-size: 1.5em;
-        }
+        
         .movie-list .in{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .movie-list .in i{
+            margin-right:0.5em;
+            font-size:2em;
+            opacity: 0.8;
+        }
+        .mouse-move{
+            width:18px;
+            height:30px;
+            margin:20px auto;
+            border:2px solid #fff;
+            border-radius:9px;
+            animation-name:mouse-ani;
+            animation-duration:2s;
+            animation-timing-function:ease;
+            animation-iteration-count:infinite;            
+        }
+        .mouse-move::after{
+            content:'';
+            display:block;
+            width:2px;
+            height:8px;
+            margin:6px auto;
+            background-color:#fff;
+        }
+
+        /* 마우스 애니메이션 */
+        @keyframes mouse-ani{
+            0%{
+                transform:translateY(0);
+            }
+            40%{
+                transform:translateY(50px);
+            }
+            60%{
+                transform:translateY(50px);
+            }
+            100%{
+                transform:translateY(0);
+            }
+        }
+        .benefit{
+            position: relative;
+        }
+        .bg-benefit{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            height: 300px;
+            background-color: #352461;
+        }
+
+        .benefit-contents{
+            display:flex;
+            flex-flow:row nowrap;
+            justify-content:space-between;
+            margin-bottom: 50px;
+        }
+        .benefit-list{
+            width:60.45454545454545%;
+            display:flex;
+            flex-flow:row wrap;
+            justify-content:space-between;
+        }
+        .benefit-slider01,.benefit-slider02{
+            width:50%;
+        }
+        .benefit-banner01{
+            width:66.31578947368421%;
+        }
+        .benefit-banner02{
+            width:30.67669172932331%;          
+        }
+        .benefit-ad{
+            position: relative;
+            width:37.72727272727273%;
+            
+        }
+        .benefit-banner01 a,.benefit-banner02 a{
+            display:none;
+        }
+        .benefit-banner01 a.active,.benefit-banner02 a.active{
+            display:block;
+        }
+        .benefit-banner01 img,.benefit-banner02 img{
+            border-radius: 6px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-play-pause>i{
+            cursor:pointer;
+            display:none;
+        }
+        .btn-play-pause>i.active{
+            display:inline;
+        }
+
+        .controls-box{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        .controls-box>div{
+            position: static !important;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .movie-list .in i{
-            margin-right: 0.5em;
-            font-size: 2em;
-            opacity: 0.8;
+
+        .controls-box>.scrollbar{
+            width: 75%;
+            position: relative !important;
+        }
+
+
+        .scrollbar0::after{
+            left: 0;
+        }
+        .scrollbar1::after{
+            left: 25%;
+        }
+        .scrollbar2::after{
+            left: 50%;
+        }
+        .scrollbar3::after{
+            left: 75%;
         }
         
+        .scrollbar span{
+            width: 25%;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .scrollbar #move-span{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
 
-
+            display: block;
+            text-indent: -999999px;
+            width: 25%;
+            height: 2px;
+            background-color: #352461;
+        }
+        .swiper-button-next,
+        .swiper-button-prev
+        {
+            width: 5%;
+            margin: 0;
+        }
+        .swiper-button-prev:after,
+        .swiper-button-next:after{
+            font-weight: 900;
+            font-size: 8px;
+            color: #352461;
+        }
+        .btn-play-pause{
+            width: 5%;
+            color: #352461;
+        }
+        .swiper-pagination{
+            width: 10%;
+        }
+        .benefit-nav ul{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            align-content: center;
+            font-weight: 300;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .benefit-nav a{
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .benefit-nav a i{
+            font-size: 3em;
+        }
+        
+        
         
 
 
@@ -501,29 +682,26 @@
                 border-bottom:2px solid #fff;
                 color:rgba(255,255,255,1);
             }
-            .movie-list-nav ul li:first-child a {
-                border: none;
+            .movie-list-nav ul li:first-child a{
+                border:none;
+            }
+            .movie-list a i{
+                font-size:2em;
             }
             .movie-list .in i{
-                font-size: 2em;
-            }
-            .movie-list .in i{
-                margin: 0;
+                margin:0;
             }
             .movie-list-nav input,
-            .movie-list-nav span
-            {
-                display: none;
-                width: 30px;
+            .movie-list-nav span{
+                display:none;
             }
-            
 
 
         }
 
         @media (max-width:840px){
             .wrap{
-                position:fixed;
+                position:absolute;
                 left:0;
                 right:0;
                 top:0;
@@ -635,7 +813,7 @@
             }
             .movie-list a i,
             .movie-list .in i{
-                font-size: 1.6em;
+                font-size:1.6em;
             }
         }
     </style>
@@ -674,6 +852,7 @@
                 <i class="fas fa-times"></i>
             </div>
         </section>
+
         <header class="header">
             <div class="container">
                 <h1>
@@ -762,12 +941,14 @@
                 </div>
             </div>
         </header>
+
         <section class="sec movie-list">
             <div class="bg-box">
                 <img src="./images/movie-list03.jpg" alt="배경이미지">
             </div>
             <div class="container">
                 <h2 class="sec-tit sec-tit-light">영화예매</h2>
+                
                 <div class="list-tit">
                     <ul>
                         <li class="active">박스오피스</li>
@@ -1679,7 +1860,7 @@
                     </article>
                     <!-- 필름소사이어티끝 -->
                     <!-- 클래식소사이어티 -->
-                    <article class="classic">
+                    <article class="clasic">
                         <!-- Slider main container -->
                         <div class="swiper">
                             <!-- Additional required wrapper -->
@@ -1984,46 +2165,176 @@
                     <ul>
                         <li>
                             <a href="#" onclick="return false">
-                                <input type="text" placeholder="영화명을 입력해주세요">
-                                <i class="fas fa-search" title="영화명을 입력해주세요"></i>
+                                <i class="fas fa-search" title="영화명을 입력하세요"></i>
+                                <input type="text" placeholder="영화명을 입력해 주세요">                                
                             </a>
                         </li>
                         <li>
                             <a href="#" class="in">
-                                <i class="fas fa-calendar" title="상영시간표"></i>
-                                <span>상영시간표</span>                               
+                                <i class="fas fa-calendar-alt" title="상영시간표"></i>
+                                <span>상영시간표</span>                                
                             </a>
                         </li>
                         <li>
                             <a href="#" class="in">
                                 <i class="fas fa-film" title="박스오피스"></i>
-                                <span>박스오피스</span>                              
+                                <span>박스오피스</span>                                
                             </a>
                         </li>
                         <li>
                             <a href="#" class="in">
                                 <i class="fas fa-ticket-alt" title="빠른예매"></i>
-                                <span>빠른예매</span>
+                                <span>빠른예매</span>                                
                             </a>
                         </li>
                     </ul>
                 </div>
 
-
+                <div class="mouse-move"></div>
             </div>
         </section>
+
         <section class="sec benefit">
-            <div class="container"></div>
+            <div class="bg-benefit"> </div>
+            <div class="container">
+                <h2 class="sec-tit">혜택</h2>
+                <div class="benefit-contents">
+                    <div class="benefit-list">
+                        <div class="benefit-slider01">
+                            <div class="swiper">
+                                <!-- slides -->
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit01-01.jpg" alt="슬라이더1">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit02-01.jpg" alt="슬라이더2">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit03-01.jpg" alt="슬라이더3">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit04-01.jpg" alt="슬라이더4">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="controls-box">
+                                    <!-- If we need scrollbar -->
+                                    <div class="scrollbar scrollbar0" id="scrollbar">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span id="move-span"></span>
+                                    </div>
+
+                                    <!-- navigation btn -->
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+
+                                    <!-- button play/stop -->
+                                    <div class="btn-play-pause">                                        
+                                        <i class="fas fa-play play active"></i> 
+                                        <i class="fas fa-pause pause"></i>                                        
+                                    </div>
+
+                                    <!-- pagenation btn -->
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="benefit-slider02">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit01-02.jpg" alt="슬라이더1-2">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit02-02.jpg" alt="슬라이더2-2">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit03-02.jpg" alt="슬라이더3-2">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./images/benefit04-02.jpg" alt="슬라이더4-2">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="benefit-banner01">
+                            <a href="#" class="active"><img src="./images/benefit-banner01.jpg" alt="베네핏 광고1"></a>
+                            <a href="#"><img src="./images/benefit-banner02.jpg" alt="베네핏 광고2"></a>
+                            <a href="#"><img src="./images/benefit-banner03.jpg" alt="베네핏 광고3"></a>
+                            <a href="#"><img src="./images/benefit-banner04.jpg" alt="베네핏 광고4"></a>
+                        </div>
+                        <div class="benefit-banner02">
+                            <a href="#" class="active"><img src="./images/benefit-banner11.jpg" alt="베네핏 광고5"></a>
+                            <a href="#"><img src="./images/benefit-banner12.jpg" alt="베네핏 광고6"></a>
+                            <a href="#"><img src="./images/benefit-banner13.jpg" alt="베네핏 광고7"></a>
+                        </div>
+                    </div>
+                    <div class="benefit-ad img-box">
+                        <a href="#">
+                            <img src="./images/banner-mid.jpg" alt="현대해상 광고2">
+                        </a>
+                        <div class="ad">ad</div>
+                    </div>
+                </div>       
+                <div class="benefit-nav">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fas fa-gem"></i></a>                        
+                            <a href="#">VIP LOUNGE</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-user"></i></i></a>                        
+                            <a href="#">멤버십</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-address-card"></i></a>                        
+                            <a href="#">할인카드</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-gift"></i></a>                        
+                            <a href="#">이벤트</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-wine-glass"></i></a>                        
+                            <a href="#">스토어</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
+        
         <section class="sec cutation">
             <div class="container"></div>
         </section>
+
         <section class="sec megainfo">
             <div class="container"></div>
         </section>
+
         <section class="sec banner-bottom">
             <div class="container"></div>
         </section>
+
         <footer class="footer">
             <div class="container"></div>
         </footer>
@@ -2112,12 +2423,13 @@
                 $(this).addClass('active');
                 let acIdx = $('.movie-list .list-tit ul li').index(this);
                 $('.movie-list article').eq(acIdx).addClass('active');
+                
             }
         })
 
 
-        // swiperJs
-        var swiper = new Swiper(".swiper", {
+        // movie list swiperJs
+        var swiper = new Swiper(".movie-list .swiper", {
             slidesPerView: 4.2,
             spaceBetween: 20,           
             breakpoints: {
@@ -2139,25 +2451,96 @@
             },
         });
 
+        
+        // benefit-slider01 swiperJs
+        var ben01 = new Swiper(".benefit-slider01 .swiper",{    
+            autoplay:{
+                delay: 2000,
+            },        
+            allowTouchMove:false,
+            effect:'fade',
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop:true,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+            },
+        })
+        // benefit-slider02 swiperJs
+        var ben02 = new Swiper(".benefit-slider02 .swiper",{
+            autoplay:{
+                delay: 2000,
+            },            
+            direction:'horizontal',
+            allowTouchMove:false,
+            loop:true,
+        })
+        
+        // ben01.controller.control = ben02;
+        // ben02.controller.control = ben01;
 
+        // benefit random banner01
+        let acBanNum1 =Math.floor(Math.random()*4);
+        let acBan1 = $('.benefit-banner01 a');
+        acBan1.removeClass('active');
+        acBan1.eq(acBanNum1).addClass('active');
+
+        // benefit random banner02
+        let acBanNum2 =Math.floor(Math.random()*3);
+        let acBan2 = $('.benefit-banner02 a');
+        acBan2.removeClass('active');
+        acBan2.eq(acBanNum2).addClass('active');
+
+
+        
         let expImg = $('.movie-exp img');
         let filmImg = $('.film img');
-        let classicImg = $('.classic img');
+        let clasicImg = $('.clasic img');
 
-        setList(expImg, 'exp');
-        setList(filmImg, 'film');
-        setList(classicImg, 'classic');
+        setList(expImg,'exp');
+        setList(filmImg,'film');
+        setList(clasicImg,'clasic');
+        
 
 
-        function setList(target, stSrc){
-            for(let cnt=0; cnt<target.length; cnt++){
+        function setList(target,stSrc){
+            for(let cnt=0;cnt<target.length;cnt++){
                 if(cnt<9){
-                    $(target).eq(cnt).attr('src', './images/'+stSrc+'-list0' + (cnt+1) + '.jpg');
+                    $(target).eq(cnt).attr('src','./images/' + stSrc + '-list0' + (cnt+1) + '.jpg');
                 }else{
-                    $(target).eq(cnt).attr('src', './images/'+stSrc+'-list' + (cnt+1) + '.jpg');
-                }            
+                    $(target).eq(cnt).attr('src','./images/'+ stSrc + '-list' + (cnt+1) + '.jpg');
+                }
             }
         }
+
+        
+        // btn play pause event
+        $('.btn-play-pause i').on({
+            'click':function(){
+                $('.btn-play-pause i').toggleClass('active');
+                if($('.play').hasClass('active')){
+                    ben01.autoplay.stop();
+                }else{
+                    ben01.autoplay.start();
+                }
+            }
+        })
+
+        // slide change event
+        ben01.on('slideChange', function () {
+            let indexNum = ben01.realIndex;
+            $('#scrollbar').removeClass();
+            $('#scrollbar').addClass('scrollbar scrollbar' + indexNum);
+        });
+        
+
+        
+
+
+
 
 
     </script>
