@@ -19,6 +19,7 @@
     <title>MEET PLAY SHARE, 메가박스</title>
 
     <style>
+    
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
         .clearfix::after{
             content:'';
@@ -61,6 +62,18 @@
             color:#fff;
             opacity:0.3;
         }
+        .icons{
+            display:inline-block;
+            margin:0;
+            border:none;
+            padding:0;
+            background-repeat:no-repeat;
+            background-position:left top;
+            background-size:100% auto;
+            font-size:0;
+            font-style:normal;
+            vertical-align:middle;
+        }
 
         .skip-menu a{
             position:fixed;
@@ -90,6 +103,7 @@
             bottom:0;
             z-index:9998;
             background-color:rgba(0,0,0,0.3);
+            display:none;
         }
         .modal-container{
             position:absolute;
@@ -122,9 +136,9 @@
             color:#000;
         }
         .btn-modal-close{
-           font-size:1.2em;
-           color:#999;
-           cursor:pointer;
+        font-size:1.2em;
+        color:#999;
+        cursor:pointer;
         }
         .btn-modal-close:hover{
             color:#000;
@@ -155,13 +169,16 @@
 
         .header{
             position:relative;
-            z-index:1000;
-            border-bottom:1px solid rgba(255,255,255,0.5);
-            padding:10px 0;
+            z-index:9998;
+            border-bottom:1px solid rgba(255,255,255,0.5);            
             background-color:#0e090a;
             color:#fff;
         }
-        h1{
+        .header .desk-container{
+            padding-top:10px;
+            padding-bottom:10px;
+        }
+        .header .desk-container h1{
             position:absolute;
             left:50%;
             top:50%;
@@ -241,6 +258,134 @@
         .sub-nav li:hover{
             opacity:1;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .m-container{
+            display:none;
+            flex-flow:row nowrap;
+            justify-content:space-between;
+            align-items: center;
+        }
+        .m-container h1{
+            box-sizing:content-box;
+            width:120px;
+            padding-left:27px;
+            order:2;
+        }
+        .ticketing{
+            order:1;
+        }
+        .m-r-items{
+            order:3;
+        }
+
+        .icon-ticket{
+            width:30px;
+            height:30px;
+            background-image:url(./m-images/ico-m-ticket.png);
+        }
+        .icon-m-feed{
+            width:51px;
+            height:24px;
+            background-image:url(./m-images/ico_m_feed.png);
+        }
+        .icon-m-burger{
+            width:30px;
+            height:30px;
+            background-image:url(./m-images/ico-m-burger.png);
+        }
+
+        .m-login{
+            /* display: none; */
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;      
+            padding: 20px;      
+            background-color:#fff;
+            color: #666;
+        }
+        .m-login h2{
+            margin-bottom: 40px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+        .m-login form{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+        .m-login form>*{
+            width: 100%;
+        }
+        .m-login label, 
+        .m-login form .e-login{
+            width: auto;
+        }
+        .m-login form label input{
+            display: none;
+        }
+        .m-login form ul,
+        .m-login form .web-login
+        {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+        }
+        .m-ico-check{
+            width: 14px;
+            height: 14px;
+            background-image: url(./m-images/ico-m-check.png);
+            background-size: auto 100%;
+        }
+        input[type="checkbox"]:checked + .save-id .m-ico-check{
+            background-position-x: right;
+        }
+        .web-login .icons{
+            width: 50px;
+            height: 50px;
+        }
+        .m-ico-facebook{
+            background-image: url(./m-images/ico-m-facebook.png);
+        }
+        .m-ico-naver{
+            background-image: url(./m-images/ico-m-naver.png);
+        }
+        .m-ico-kakao{
+            background-image: url(./m-images/ico-m-kakao.png);
+        }
+        .m-ico-payco{
+            background-image: url(./m-images/ico-m-payco.png);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         .movie-list{
@@ -557,7 +702,7 @@
             left:0;
             top:50%;
             transform:translateY(-50%);
-           
+        
             display:block;
             text-indent:-999999px;
             width:25%;
@@ -696,7 +841,7 @@
             overflow:hidden;
             filter:grayscale(1) opacity(0.5);
             transition:0.3s;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
         }
         .megainfo-list ul li:hover{
             filter:grayscale(0) opacity(1);
@@ -737,97 +882,135 @@
         }
         .megainfo-nav ul{
             display:grid;
-            grid-template-columns:repeat(6,1fr);            
+            grid-template-columns:repeat(6,1fr);                        
         }
         .megainfo-nav ul li{
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
+            display:flex;
+            flex-flow:column nowrap;
+            align-items:center;
         }
         .megainfo-nav ul li .img-box a{
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+            display:inline-block;
+            width:60px;
+            height:60px;
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size:contain;            
         }
-
         .bg-mega01 a{
-            background-image: url(./images/ico-megainfo01.png);
+            background-image:url(./images/ico-megainfo01.png);
         }
         .bg-mega02 a{
-            background-image: url(./images/ico-megainfo02.png);
+            background-image:url(./images/ico-megainfo02.png);
         }
         .bg-mega03 a{
-            background-image: url(./images/ico-megainfo03.png);
+            background-image:url(./images/ico-megainfo03.png);
         }
         .bg-mega04 a{
-            background-image: url(./images/ico-megainfo04.png);
+            background-image:url(./images/ico-megainfo04.png);
         }
         .bg-mega05 a{
-            background-image: url(./images/ico-megainfo05.png);
+            background-image:url(./images/ico-megainfo05.png);
         }
         .bg-mega06 a{
-            background-image: url(./images/ico-megainfo06.png);
+            background-image:url(./images/ico-megainfo06.png);
         }
         .megainfo-nav ul li p{
-            text-align: center;
+            text-align:center;
         }
+
         .wrap .banner-bottom{
-            padding-bottom: 20px;
+            padding-bottom:20px;
         }
         .banner-bottom .img-box{
-            position: relative;
+            position:relative;
         }
+
+
+        .bnb{
+            display:none;
+            position:fixed;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:6000;
+            padding:10px 0;
+            background-color:#fff;
+        }
+        .bnb ul{
+            display:flex;
+            flex-flow:row nowrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .bnb ul a{
+            display:flex;
+            flex-flow:column nowrap;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .bnb .icons{
+            width:40px;
+            height:40px;
+        }
+        .m-ico-home{
+            background-image:url(./m-images/bnb-home-on.png);
+        }
+        .m-ico-store{
+            background-image:url(./m-images/bnb-store_new.png);
+        }
+        .m-ico-reserve{
+            background-image:url(./m-images/bnb-reserve_new.png);
+        }
+        .m-ico-event{
+            background-image:url(./m-images/bnb-event_new.png);
+        }
+        .m-ico-mymega{
+            background-image:url(./m-images/bnb-mymega_new.png);
+        }
+
 
         .footer{
-            background-color: #503396;
-            color: #fff;
+            padding:30px;
+            background-color:#503396;
+            color:#fff;
+        }
+        .footer .in:first-child{
+            margin-bottom:20px;
         }
         .footer-nav{
-            float: left;
-        }
-        .footer-nav:last-child{
-            margin-bottom: 20px;
+            float:left;
         }
         .footer-nav li{
-            display: inline-block;
-            margin-right: 1em;
-            color: #999;
-        }
+            display:inline-block;
+            margin-right:1em;
+        }        
         .cinema-search{
-            float: right;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 10px 30px;
-            border-radius: 20px;
+            float:right;           
+            border:1px solid rgba(255,255,255,0.8);
+            padding:10px 30px;
+            border-radius:20px;
             cursor: pointer;
         }
-
         .footer-logo{
-            width: 140px;
-            margin-right: 20px;
-            filter: grayscale(1);
+            width:140px;
+            margin-right:20px;
+            opacity:0.5;
         }
-        .footer-logo, .address{
-            float: left;
+        .footer-logo,.address{
+            float:left;
         }
         .address{
-            font-style: normal;
+            font-style:normal;
         }
         .sns-list{
-            float: right;
+            float:right;
         }
         .sns-list li{
-            display: inline-block;
-        }
-        
+            display:inline-block;
+        }   
 
         
-        
-        
-
-
 
         @media (max-width:1200px){
             .btn-banner-top-close{
@@ -844,7 +1027,7 @@
         }
 
         @media (max-width:1024px){
-            h1{               
+            .header .desk-container h1{               
                 left:20px;                
                 transform:translate(0,-50%);
             }
@@ -918,6 +1101,9 @@
             .notice-container ul{
                 grid-template-columns: 1fr 8.5fr 1.5fr 1fr;
             }
+            .footer-nav li:nth-child(2n){
+                display:none;
+            }
 
         }
 
@@ -939,84 +1125,24 @@
                 right:50%;
             }
             .banner-top{display:none;}
-            .header{padding:20px 0;}
-            .header .container{
-                display:flex;
-                justify-content:space-between;
-            }
-            
-            h1{
-                left:50%;
-                transform:translate(-50%,-50%);
-            }
-            .quick-nav{
-                flex-direction:column;
-                justify-content:flex-start;
+
+            .header{
                 position:fixed;
-                left:-50%;
-                right:100%;
-                top:0;
-                bottom:0;
-                padding:30px 20px;
-                background-color:#000;
-                transition:0.3s;
-            }
-            
-            .quick-nav.show-quick{
                 left:0;
-                right:50%;
-            }
-            
-            .quick-nav>ul:first-child{
-                order:2;
-                flex-direction:column;
-            }            
-            .quick-nav>ul:first-child>li{
-                margin-bottom:20px;
-                font-size: 1.4em;
-                opacity:1;
-            }
-            .quick-nav>ul:last-child{
-                flex-wrap:wrap;                
-                order:1;
-                margin-bottom:30px;
-            }           
-            
-            .nav{
-                flex-direction:column;
-                justify-content: flex-start;
-                position:fixed;
-                left:100%;
-                right:-50%;
-                top:0;
-                bottom:0;
-                padding:30px 20px;
-                background-color:#000;
-                transition:0.3s;
-            }
-            .nav.show-nav{
-                left:50%;
                 right:0;
-            }
-            .nav>ul{
-                flex-direction:column;               
-            }
-            .nav>ul:first-child{
-                margin-right:0;
-            }
-            .nav>ul>li{
-                margin-right:0;
-                margin-bottom:20px;
-            }
-            .sub-nav{
-                position:static;
-            }
-            .sub-nav>ul{
-                flex-direction:column;
-                padding:0;
+                top:0;
+                border-bottom:none;                
             }
 
-            .btn-mo-quick,.btn-mo-nav{display:block;}
+            .header .desk-container{display:none;}
+            .header .m-container{
+                display:flex;
+            }
+
+            .wrap>.movie-list{
+                padding-top:calc(40px + 55px);
+            }
+
             .benefit-list{
                 width:100%;
             }
@@ -1039,6 +1165,19 @@
             .notice-container ul li.notice-tit{
                 padding-left:0;
             }
+            .megainfo-nav ul li .img-box a{
+                width:50px;
+                height:50px;
+            }
+            .megainfo-nav ul li p{
+                display:none;
+            }
+            .bnb{
+                display:block;
+            }
+            .footer{
+                padding-bottom:110px;
+            }
         }    
         
         @media (max-width:640px){
@@ -1046,12 +1185,8 @@
                 grid-template-columns:repeat(3,1fr);
                 gap:40px;
             }
-            .megainfo-nav ul li .img-box a{
-                width: 40px;
-                height: 40px;
-            }
-            .megainfo-nav ul li p{
-                display: none;
+            .footer-nav,.footer-logo,.address{
+                margin-bottom:20px;
             }
         }
 
@@ -1104,7 +1239,17 @@
             .notice-container ul li.write-date{
                 display:none;
             }
-
+            .megainfo-nav ul li .img-box a{
+                width:30px;
+                height:30px;
+            }
+            .bnb .icons{
+                width:30px;
+                height:30px;
+            }
+            .bnb span{
+                font-size:0.8em;
+            }
         }
     </style>
 </head>
@@ -1143,7 +1288,7 @@
             </div>
         </section>
         <header class="header">
-            <div class="container">
+            <div class="container desk-container">
                 <h1>
                     <span>메가박스</span>
                     <div class="img-box">
@@ -1229,7 +1374,62 @@
                     </ul>
                 </div>
             </div>
+            <div class="container m-container">
+                <h1><a href="./index.html"><img src="./m-images/m-logo-white.png" alt="시작페이지로 이동"></a></h1>
+                <div class="ticketing">
+                    <a href="#">
+                        <i class="icons icon-ticket" id="btn-ticket">예매</i>
+                    </a>
+                </div>
+                <div class="m-r-items">
+                    <a href="#">
+                        <i class="icons icon-m-feed">피드</i>
+                    </a>
+                    <a href="#">
+                        <i class="icons icon-m-burger">메뉴</i>
+                    </a>
+                </div>
+            </div>
+            <div class="container m-login">
+                <h2>로그인</h2>
+                <form>
+                    <input type="text" placeholder="아이디">
+                    <input type="password" placeholder="비밀번호">
+                    <label>
+                        <input type="checkbox">
+                        <span class="save-id">
+                            <i class="icons m-ico-check"></i>
+                        </span>
+                        아이디 저장
+                    </label>
+                    <div class="e-login">
+                        <span>휴대폰 간편로그인</span>
+                    </div>
+                    <button type="button">로그인</button>
+                    <ul>
+                        <li><a href="#">ID/PW찾기</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">비회원 예매확인</a></li>
+                    </ul>
+                    <div class="web-login">
+                        <i class="icons m-ico-facebook"></i>
+                        <i class="icons m-ico-naver"></i>
+                        <i class="icons m-ico-kakao"></i>
+                        <i class="icons m-ico-payco"></i>
+                    </div>
+                </form>
+                <div class="ad-box">
+                    <div class="img-box">
+                        <a href="#"><img src="./images/banner-mid.jpg" alt="현대해상광고4"></a>
+                        <div class="ad"></div>
+                    </div>
+                </div>
+                <div class="btn-close-login">
+
+                </div>
+            </div>
         </header>
+
         <section class="sec movie-list">
             <div class="bg-box">
                 <img src="./images/movie-list03.jpg" alt="배경이미지">
@@ -2760,9 +2960,46 @@
                 <div class="img-box">
                     <a href="#"><img src="./images/banner-bottom.jpg" alt="현대해상광고3"></a>
                     <div class="ad">AD</div>
-                </div>
+                </div>                
             </div>
         </section>
+        <section class="bnb">
+            <div class="container bnb-container">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="icons m-ico-home"></i>
+                            <span>홈</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icons m-ico-store"></i>
+                            <span>스토어</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icons m-ico-reserve"></i>
+                            <span>예매</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icons m-ico-event"></i>
+                            <span>이벤트</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icons m-ico-mymega"></i>
+                            <span>MY</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
         <footer class="footer">
             <div class="container">
                 <div class="in clearfix">
@@ -2775,7 +3012,7 @@
                             <li><a href="#">이용약관</a></li>
                             <li><a href="#">위치기반서비스 이용약관</a></li>
                             <li><a href="#"><strong>개인정보처리방침</strong></a></li>
-                            <li><a href="#">윤리경영</a></li>
+                            <li><a href="#">윤리경영</a></li>                            
                         </ul>
                     </div>
                     <div class="cinema-search">
@@ -2783,8 +3020,10 @@
                         <span>극장찾기</span>
                     </div>
                 </div>
-                <div class="in">
-                    <div class="footer-logo"><a href="./index.html"><img src="./images/logo.png" alt="로고2"></a></div>
+                <div class="in clearfix">
+                    <div class="footer-logo">
+                        <a href="./index.html"><img src="./images/logo-white.png" alt="시작페이지로"></a>
+                    </div>
                     <address class="address">
                         서울특별시 마포구 월드컵로 240, 지상2층(성산동, 월드컵주경기장) ARS 1544-0070
                         <br>
@@ -2794,33 +3033,17 @@
                     </address>
                     <div class="sns-list">
                         <ul>
-                            <li>
-                                <a href="#"><img src="./images/ico-twitter.png" alt="twitter" title="twitter"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="./images/ico-facebook.png" alt="facebook" title="facebook"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="./images/ico-instagram.png" alt="instagram" title="instagram"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="./images/ico-googleplay.png" alt="googleplay" title="googleplay"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="./images/ico-appstore.png" alt="appstore" title="appstore"></a>
-                            </li>
+                            <li><a href="#"><img src="./images/ico-twitter.png" alt="twitter" title="twitter"></a></li>
+                            <li><a href="#"><img src="./images/ico-facebook.png" alt="facebook" title="facebook"></a></li>
+                            <li><a href="#"><img src="./images/ico-instagram.png" alt="instagram" title="instagram"></a></li>
+                            <li><a href="#"><img src="./images/ico-googleplay.png" alt="googleplay" title="googleplay"></a></li>
+                            <li><a href="#"><img src="./images/ico-appstore.png" alt="appstore" title="appstore"></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </footer>
-    </section>
-
-    
-
-
-
-
+    </section> 
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -2829,6 +3052,32 @@
     <!-- swiper Js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.3/swiper-bundle.min.js" integrity="sha512-+1MtN0rwSlEnZo0agG99mCQChlBtfe8hyHItwWtgiD33mWvaNVZkZB9yX2S92z5HgDg1+EcitjutZejbHUcZAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        if($.cookie('modal-popup') == 'no'){
+            $('.modal-popup').css('display','none');
+        }else{
+            $('.modal-popup').css('display','block');
+        }
+
+         // benefit random banner01
+         let acBanNum1 =Math.floor(Math.random()*4);
+        let acBan1 = $('.benefit-banner01 a');
+        acBan1.removeClass('active');
+        acBan1.eq(acBanNum1).addClass('active');
+
+        // benefit random banner02
+        let acBanNum2 =Math.floor(Math.random()*3);
+        let acBan2 = $('.benefit-banner02 a');
+        acBan2.removeClass('active');
+        acBan2.eq(acBanNum2).addClass('active');
+        
+        let expImg = $('.movie-exp img');
+        let filmImg = $('.film img');
+        let clasicImg = $('.clasic img');
+
+        setList(expImg,'exp');
+        setList(filmImg,'film');
+        setList(clasicImg,'clasic');
+
         // modal close event
         $('.btn-modal-close').on({
             'click':function(){
@@ -2839,49 +3088,13 @@
             }
         })
 
-        if($.cookie('modal-popup') == 'no'){
-            $('.modal-popup').css('display','none');
-        }else{
-            $('.modal-popup').css('display','block');
-        }
-
         // banner top close event
         $('.btn-banner-top-close').on({
             'click':function(){
                 $('.banner-top').slideUp();
             }
         })
-
-        // sub-nav call event
-        $('.nav>ul>li').on({
-            'mouseover':function(){
-                $('.sub-nav').css('display','none');
-                $(this).children('.sub-nav').css('display','block');
-            }
-        });
-
-        // sub nav close event
-        $('.sub-nav').on({
-            'mouseout':function(){
-                $(this).css('display','none');
-            }
-        })
-
-        // mo quick menu call event
-        $('.btn-mo-quick').on({
-            'click':function(){               
-                $('.wrap,.quick-nav').toggleClass('show-quick');
-            }
-        })
-
-
-        // mo nav call event
-        $('.btn-mo-nav').on({
-            'click':function(){               
-                $('.wrap,.nav').toggleClass('show-nav');
-            }
-        })
-
+        
         // window resize event
         $(window).resize(function(){
             let winWidth = $(this).width();
@@ -2926,7 +3139,6 @@
                 },
             },
         });
-
         
         // benefit-slider01 swiperJs
         var ben01 = new Swiper(".benefit-slider01 .swiper",{ 
@@ -2942,6 +3154,7 @@
                 type: 'fraction',
             },
         })
+        
         // benefit-slider02 swiperJs
         var ben02 = new Swiper(".benefit-slider02 .swiper",{                       
             direction:'horizontal',
@@ -2952,28 +3165,7 @@
         ben01.controller.control = ben02;
         ben02.controller.control = ben01;
 
-        // benefit random banner01
-        let acBanNum1 =Math.floor(Math.random()*4);
-        let acBan1 = $('.benefit-banner01 a');
-        acBan1.removeClass('active');
-        acBan1.eq(acBanNum1).addClass('active');
-
-        // benefit random banner02
-        let acBanNum2 =Math.floor(Math.random()*3);
-        let acBan2 = $('.benefit-banner02 a');
-        acBan2.removeClass('active');
-        acBan2.eq(acBanNum2).addClass('active');
-
-
-        
-        let expImg = $('.movie-exp img');
-        let filmImg = $('.film img');
-        let clasicImg = $('.clasic img');
-
-        setList(expImg,'exp');
-        setList(filmImg,'film');
-        setList(clasicImg,'clasic');
-        
+       
 
 
         function setList(target,stSrc){
@@ -3054,6 +3246,21 @@
         function cuLoad(idxNum){
             $('#curation-ajax').load('curation.html #curation0' + idxNum);
         }
+
+
+
+        // 모바일 이벤트
+        $('#btn-ticket').on({
+            'click':loadLogin,
+        })
+
+        function loadLogin(){
+            let logCfm = confirm('로그인 후 사용가능합니다.\n로그인 하시겠습니까?');
+            if(logCfm){
+                $('.m-login').show(0);
+            }
+        }
+
     </script>
 </body>
 </html>
